@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHANTOM GAMING | Official Portal & Creator Hub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#08090d',
+                            card: '#0f111a',
+                            panel: 'rgba(15, 17, 26, 0.85)',
+                            border: '#1f2438',
+                            heading: '#f1f5f9',
+                            body: '#94a3b8',
+                            muted: '#64748b'
+                        },
+                        light: {
+                            bg: '#f8fafc',
+                            card: '#ffffff',
+                            panel: 'rgba(255, 255, 255, 0.88)',
+                            border: '#e2e8f0',
+                            heading: '#0f172a',
+                            body: '#334155',
+                            muted: '#64748b'
+                        },
+                        brand: {
+                            indigo: '#6366f1',
+                            violet: '#a855f7',
+                            pink: '#ec4899',
+                            magenta: '#f43f5e',
+                            cyan: '#06b6d4',
+                            emerald: '#10b981'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+                    },
+                    boxShadow: {
+                        'soft-sm': '0 2px 8px 0 rgba(0, 0, 0, 0.04)',
+                        'soft-md': '0 8px 30px 0 rgba(0, 0, 0, 0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        html.dark body {
+            background-color: #08090d;
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(168, 85, 247, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 100% 100%, rgba(236, 72, 153, 0.08) 0%, transparent 40%);
+            color: #94a3b8;
+        }
+
+        html:not(.dark) body {
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 100% 100%, rgba(236, 72, 153, 0.06) 0%, transparent 40%);
+            color: #334155;
+        }
+
+        /* Glassmorphism Dynamic Panels (GPU Hardware Accelerated) */
+        html.dark .glass-header {
+            background: rgba(15, 17, 26, 0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1f2438;
+        }
+        html:not(.dark) .glass-header {
+            background: rgba(255, 255, 255, 0.90);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        html.dark .glass-card {
+            background: #0f111a;
+            border: 1px solid #1f2438;
+            box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.3);
+            will-change: transform;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        html:not(.dark) .glass-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.04);
+            will-change: transform;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        html.dark .glass-card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+            transform: translate3d(0, -3px, 0);
+        }
+        html:not(.dark) .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translate3d(0, -3px, 0);
+        }
+
+        .gradient-btn-primary {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            box-shadow: 0 4px 14px rgba(168, 85, 247, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            will-change: transform;
+        }
+        .gradient-btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+            transform: translate3d(0, -2px, 0);
+        }
+
+        /* Animated Live Ghost Icon */
+        @keyframes ghostFloat {
+            0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+            50% { transform: translate3d(0, -4px, 0) rotate(6deg); }
+        }
+
+        .ghost-live-anim {
+            animation: ghostFloat 3s ease-in-out infinite;
+            will-change: transform;
+            display: inline-block;
+        }
+
+        /* GPU-Optimized Galaxy Aura (Transform Only - No Repaint Blurs) */
+        @keyframes galaxySwirl {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .galaxy-icon-container {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .galaxy-glow-bg {
+            position: absolute;
+            inset: -4px;
+            border-radius: 1.25rem;
+            background: conic-gradient(from 0deg, #a855f7, #ec4899, #06b6d4, #f43f5e, #10b981, #a855f7);
+            animation: galaxySwirl 8s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.85;
+            filter: blur(8px);
+            will-change: transform;
+        }
+
+        .galaxy-glow-bg-pink { background: conic-gradient(from 0deg, #ec4899, #f43f5e, #a855f7, #ec4899); }
+        .galaxy-glow-bg-cyan { background: conic-gradient(from 0deg, #06b6d4, #3b82f6, #10b981, #06b6d4); }
+        .galaxy-glow-bg-violet { background: conic-gradient(from 0deg, #a855f7, #ec4899, #6366f1, #a855f7); }
+        .galaxy-glow-bg-emerald { background: conic-gradient(from 0deg, #10b981, #06b6d4, #a855f7, #10b981); }
+        .galaxy-glow-bg-red { background: conic-gradient(from 0deg, #ef4444, #f43f5e, #ec4899, #ef4444); }
+
+        /* ULTRA-OPTIMIZED LIGHTWEIGHT GAMING FIDGETS */
+        #bg-fidgets-layer {
+            contain: strict;
+        }
+
+        @keyframes floatFast1 {
+            0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+            50% { transform: translate3d(0, -14px, 0) rotate(10deg); }
+        }
+        @keyframes floatFast2 {
+            0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+            50% { transform: translate3d(0, 16px, 0) rotate(-12deg); }
+        }
+        @keyframes floatFast3 {
+            0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+            50% { transform: translate3d(10px, -10px, 0) rotate(18deg); }
+        }
+
+        .gaming-fidget {
+            position: absolute;
+            pointer-events: auto;
+            cursor: pointer;
+            user-select: none;
+            opacity: 0.22;
+            will-change: transform, opacity;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+        }
+        html:not(.dark) .gaming-fidget {
+            opacity: 0.18;
+        }
+        .gaming-fidget:hover {
+            opacity: 0.95 !important;
+            transform: scale(1.35) rotate(15deg) !important;
+        }
+        .fidget-anim-1 { animation: floatFast1 6s ease-in-out infinite; }
+        .fidget-anim-2 { animation: floatFast2 8s ease-in-out infinite; }
+        .fidget-anim-3 { animation: floatFast3 7s ease-in-out infinite; }
+
+        @keyframes floatExpUp {
+            0% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+            100% { opacity: 0; transform: translate3d(0, -40px, 0) scale(1.25); }
+        }
+
+        .exp-floater {
+            position: fixed;
+            pointer-events: none;
+            z-index: 100;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            font-size: 13px;
+            color: #ec4899;
+            will-change: transform, opacity;
+            animation: floatExpUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* Hardware Accelerated View Switching */
+        .view-section {
+            display: none;
+            opacity: 0;
+            will-change: opacity, transform;
+            transform: translate3d(0, 6px, 0);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .view-section.active {
+            display: block;
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col justify-between transition-colors duration-200 relative overflow-x-hidden">
+
+    <!-- Toast Notifications Floating Container -->
+    <div id="toast-container" class="fixed top-20 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- LIVE DECORATIVE GAMING FIDGETS BACKGROUND LAYER (CONTAINED & ACCELERATED) -->
+    <div id="bg-fidgets-layer" class="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
+        <!-- Fidget 1: Gamepad Controller -->
+        <div onclick="fidgetClick(this, 'Controller Synced!', event)" class="gaming-fidget fidget-anim-1 top-[10%] left-[2%] text-brand-pink text-4xl sm:text-5xl" title="Click to interact!">
+            <i class="fas fa-gamepad"></i>
+        </div>
+        <!-- Fidget 2: Crosshair Target -->
+        <div onclick="fidgetClick(this, 'Target Locked!', event)" class="gaming-fidget fidget-anim-2 top-[24%] right-[3%] text-brand-cyan text-3xl sm:text-5xl" title="Click to interact!">
+            <i class="fas fa-crosshair"></i>
+        </div>
+        <!-- Fidget 3: Assault Weapon -->
+        <div onclick="fidgetClick(this, 'Loadout Armed!', event)" class="gaming-fidget fidget-anim-3 top-[50%] left-[2%] text-brand-violet text-3xl sm:text-4xl" title="Click to interact!">
+            <i class="fas fa-gun"></i>
+        </div>
+        <!-- Fidget 4: Cyber Gem -->
+        <div onclick="fidgetClick(this, 'XP Boost Acquired!', event)" class="gaming-fidget fidget-anim-1 top-[72%] right-[4%] text-brand-emerald text-3xl sm:text-4xl" title="Click to interact!">
+            <i class="fas fa-gem"></i>
+        </div>
+        <!-- Fidget 5: Ghost Emblem -->
+        <div onclick="fidgetClick(this, 'Phantom Mode Active!', event)" class="gaming-fidget fidget-anim-2 top-[86%] left-[6%] text-brand-magenta text-4xl sm:text-5xl" title="Click to interact!">
+            <i class="fas fa-ghost"></i>
+        </div>
+        <!-- Fidget 6: Lightning Bolt -->
+        <div onclick="fidgetClick(this, 'Overcharge Ready!', event)" class="gaming-fidget fidget-anim-3 top-[16%] right-[12%] text-amber-400 text-2xl sm:text-3xl" title="Click to interact!">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <!-- Fidget 7: Shield Defender -->
+        <div onclick="fidgetClick(this, 'Armor Boosted!', event)" class="gaming-fidget fidget-anim-1 top-[40%] right-[2%] text-indigo-500 text-3xl sm:text-4xl" title="Click to interact!">
+            <i class="fas fa-shield-halved"></i>
+        </div>
+        <!-- Fidget 8: Crown Trophy -->
+        <div onclick="fidgetClick(this, 'Victory Royale!', event)" class="gaming-fidget fidget-anim-2 top-[62%] right-[10%] text-yellow-400 text-3xl sm:text-4xl" title="Click to interact!">
+            <i class="fas fa-crown"></i>
+        </div>
+        <!-- Fidget 9: Skull Emblem -->
+        <div onclick="fidgetClick(this, 'Headshot Multiplier!', event)" class="gaming-fidget fidget-anim-3 top-[34%] left-[12%] text-rose-500 text-2xl sm:text-3xl" title="Click to interact!">
+            <i class="fas fa-skull"></i>
+        </div>
+        <!-- Fidget 10: Arcade Joystick -->
+        <div onclick="fidgetClick(this, 'Arcade Combo Unlocked!', event)" class="gaming-fidget fidget-anim-1 top-[80%] right-[15%] text-brand-cyan text-3xl sm:text-4xl" title="Click to interact!">
+            <i class="fas fa-dice-d20"></i>
+        </div>
+        <!-- Fidget 11: Fire Aura -->
+        <div onclick="fidgetClick(this, 'Killstreak Activated!', event)" class="gaming-fidget fidget-anim-2 top-[68%] left-[1.5%] text-orange-500 text-3xl sm:text-4xl" title="Click to interact!">
+            <i class="fas fa-fire"></i>
+        </div>
+        <!-- Fidget 12: Rocket Boost -->
+        <div onclick="fidgetClick(this, 'Speed Boost Active!', event)" class="gaming-fidget fidget-anim-3 top-[5%] right-[22%] text-brand-pink text-2xl sm:text-3xl" title="Click to interact!">
+            <i class="fas fa-rocket"></i>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-40 glass-header shadow-soft-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <button onclick="switchView('home')" class="flex items-center gap-3.5 group text-left">
+                    <div class="galaxy-icon-container">
+                        <div class="galaxy-glow-bg group-hover:opacity-100 transition duration-300"></div>
+                        <div class="w-11 h-11 rounded-2xl dark:bg-dark-card bg-white border dark:border-dark-border border-light-border flex items-center justify-center relative z-10 shadow-soft-md group-hover:scale-105 transition-transform">
+                            <i class="fas fa-ghost text-brand-pink text-xl ghost-live-anim"></i>
+                            <!-- Live Pulse Indicator Dot -->
+                            <span class="absolute -top-0.5 -right-0.5 w-3 h-3 bg-brand-emerald rounded-full border-2 dark:border-dark-card border-white animate-ping"></span>
+                            <span class="absolute -top-0.5 -right-0.5 w-3 h-3 bg-brand-emerald rounded-full border-2 dark:border-dark-card border-white"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="font-bold text-2xl tracking-tight dark:text-dark-heading text-light-heading uppercase flex items-center gap-2">
+                            PHANTOM <span class="text-brand-pink text-[11px] font-mono tracking-wider bg-brand-pink/10 px-2 py-0.5 rounded-md border border-brand-pink/20 font-semibold">HQ</span>
+                        </span>
+                        <span class="text-[10px] text-brand-violet dark:text-brand-pink font-mono tracking-widest block -mt-1 font-semibold uppercase">CREATOR PORTAL</span>
+                    </div>
+                </button>
+
+                <!-- Navigation Tabs (Desktop) -->
+                <nav class="hidden md:flex items-center space-x-1 font-semibold text-xs">
+                    <button onclick="switchView('home')" id="nav-home" class="nav-tab-btn active px-3 py-2 rounded-xl text-brand-pink bg-brand-pink/10 border border-brand-pink/20 transition-all flex items-center gap-2">
+                        <i class="fas fa-th-large"></i> Hub Center
+                    </button>
+                    <button onclick="switchView('packs')" id="nav-packs" class="nav-tab-btn px-3 py-2 rounded-xl text-slate-500 dark:text-slate-400 hover:text-brand-pink dark:hover:text-white transition-all flex items-center gap-2">
+                        <i class="fas fa-box-open text-brand-indigo"></i> Packs
+                    </button>
+                    <button onclick="switchView('loadouts')" id="nav-loadouts" class="nav-tab-btn px-3 py-2 rounded-xl text-slate-500 dark:text-slate-400 hover:text-brand-pink dark:hover:text-white transition-all flex items-center gap-2">
+                        <i class="fas fa-gun text-brand-pink"></i> Gunsmith
+                    </button>
+                    <button onclick="switchView('huds')" id="nav-huds" class="nav-tab-btn px-3 py-2 rounded-xl text-slate-500 dark:text-slate-400 hover:text-brand-pink dark:hover:text-white transition-all flex items-center gap-2">
+                        <i class="fas fa-gamepad text-brand-violet"></i> Controls
+                    </button>
+                    <button onclick="switchView('servers')" id="nav-servers" class="nav-tab-btn px-3 py-2 rounded-xl text-slate-500 dark:text-slate-400 hover:text-brand-pink dark:hover:text-white transition-all flex items-center gap-2">
+                        <i class="fas fa-server text-brand-cyan"></i> Servers
+                    </button>
+                    <button onclick="switchView('videos')" id="nav-videos" class="nav-tab-btn px-3 py-2 rounded-xl text-slate-500 dark:text-slate-400 hover:text-brand-pink dark:hover:text-white transition-all flex items-center gap-2">
+                        <i class="fab fa-youtube text-red-500"></i> Videos
+                    </button>
+                    <button onclick="switchView('tools')" id="nav-tools" class="nav-tab-btn px-3 py-2 rounded-xl text-slate-500 dark:text-slate-400 hover:text-brand-pink dark:hover:text-white transition-all flex items-center gap-2">
+                        <i class="fas fa-bolt text-brand-emerald"></i> Tweaks
+                    </button>
+                </nav>
+
+                <!-- External Actions & Light/Dark Theme Switcher -->
+                <div class="flex items-center gap-3">
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle-btn" onclick="toggleTheme()" class="p-2.5 rounded-xl dark:bg-dark-card bg-white border dark:border-dark-border border-light-border dark:text-amber-400 text-indigo-600 hover:scale-105 transition-all shadow-soft-sm flex items-center gap-2 text-xs font-bold font-mono">
+                        <i id="theme-icon" class="fas fa-sun text-base"></i>
+                        <span id="theme-label" class="hidden sm:inline">LIGHT MODE</span>
+                    </button>
+
+                    <a href="https://youtube.com" target="_blank" rel="noopener" class="hidden lg:flex px-4 py-2.5 rounded-xl gradient-btn-primary text-white font-bold text-xs tracking-wider uppercase items-center gap-2">
+                        <i class="fab fa-youtube text-sm"></i>
+                        <span>Subscribe</span>
+                    </a>
+
+                    <!-- Mobile Menu Trigger -->
+                    <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-xl dark:bg-dark-card bg-white border dark:border-dark-border border-light-border dark:text-white text-light-heading shadow-soft-sm">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden border-t dark:border-dark-border border-light-border dark:bg-dark-card bg-white px-4 pt-3 pb-6 space-y-2 shadow-soft-md">
+            <button onclick="switchView('home'); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-xl dark:text-white text-light-heading hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 font-semibold text-xs">
+                <i class="fas fa-th-large text-brand-pink w-5"></i> Hub Center
+            </button>
+            <button onclick="switchView('packs'); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-xl dark:text-white text-light-heading hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 font-semibold text-xs">
+                <i class="fas fa-box-open text-brand-indigo w-5"></i> Packs & Texture Vault
+            </button>
+            <button onclick="switchView('loadouts'); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-xl dark:text-white text-light-heading hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 font-semibold text-xs">
+                <i class="fas fa-gun text-brand-pink w-5"></i> Pro Gunsmith Loadouts
+            </button>
+            <button onclick="switchView('huds'); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-xl dark:text-white text-light-heading hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 font-semibold text-xs">
+                <i class="fas fa-gamepad text-brand-violet w-5"></i> Claw HUDs & Sensitivities
+            </button>
+            <button onclick="switchView('servers'); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-xl dark:text-white text-light-heading hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 font-semibold text-xs">
+                <i class="fas fa-server text-brand-cyan w-5"></i> Game Servers (IP & Ports)
+            </button>
+            <button onclick="switchView('videos'); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-xl dark:text-white text-light-heading hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 font-semibold text-xs">
+                <i class="fab fa-youtube text-red-500 w-5"></i> Content Showcase
+            </button>
+            <button onclick="switchView('tools'); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-xl dark:text-white text-light-heading hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 font-semibold text-xs">
+                <i class="fas fa-bolt text-brand-emerald w-5"></i> FPS Tweaks & FAQs
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow">
+
+        <!-- ================= VIEW 1: HOME COMMAND CENTER ================= -->
+        <section id="view-home" class="view-section active space-y-10">
+            <!-- Hero Spotlight -->
+            <div class="glass-card rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-violet/10 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="absolute -left-20 -top-20 w-80 h-80 bg-brand-pink/10 rounded-full blur-2xl pointer-events-none"></div>
+                
+                <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10">
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-pink/10 border border-brand-pink/20 text-brand-pink text-xs font-mono font-bold uppercase">
+                            <span class="w-2 h-2 rounded-full bg-brand-pink animate-pulse"></span> SYSTEM ONLINE • DUAL THEME ACTIVE
+                        </div>
+                        <h1 class="text-3xl sm:text-5xl font-extrabold dark:text-dark-heading text-light-heading uppercase tracking-tight leading-tight">
+                            WATASHI NO <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-violet via-brand-pink to-brand-cyan">PHANTOM SOCIETY</span>
+                        </h1>
+                        <p class="dark:text-dark-body text-light-body text-sm sm:text-base leading-relaxed">
+                            The centralized hub for texture packs, verified zero-recoil loadouts, 4-finger claw HUD sensitivity codes, and active game servers.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-3 pt-2">
+                            <button onclick="switchView('packs')" class="px-6 py-3 rounded-xl gradient-btn-primary text-white font-bold text-xs tracking-wider uppercase flex items-center gap-2">
+                                <i class="fas fa-box-open"></i> Explore Vault
+                            </button>
+                            <a href="https://discord.gg" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl dark:bg-dark-card bg-white dark:text-white text-light-heading font-bold text-xs tracking-wider uppercase dark:border-dark-border border-light-border hover:opacity-90 flex items-center gap-2 transition shadow-soft-sm">
+                                <i class="fab fa-discord text-brand-violet"></i> Discord Community
+                            </a>
+                            <button onclick="copyToClipboard('watashinophantomsociety@gmail.com', 'Gmail Address Copied!')" class="w-full sm:w-auto px-6 py-3 rounded-xl dark:bg-dark-card bg-white dark:text-white text-light-heading font-bold text-xs tracking-wider uppercase dark:border-dark-border border-light-border hover:opacity-90 flex items-center gap-2 transition shadow-soft-sm">
+                                <i class="fas fa-envelope text-red-500"></i> Gmail Contact
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Video Spotlight Player -->
+                    <div class="lg:col-span-5">
+                        <div class="relative rounded-2xl overflow-hidden bg-slate-900 dark:border-dark-border border-light-border border aspect-video shadow-soft-md">
+                            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="Featured Video" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PORTAL ICON CATEGORIES GRID -->
+            <div>
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-lg font-bold dark:text-dark-heading text-light-heading uppercase tracking-wider flex items-center gap-2">
+                        <i class="fas fa-th-large text-brand-pink"></i> CATEGORY PORTAL MODULES
+                    </h2>
+                    <span class="text-xs font-mono dark:text-dark-muted text-light-muted">CLICK TO VIEW</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Category 1: Packs -->
+                    <div onclick="switchView('packs')" class="glass-card rounded-2xl p-6 cursor-pointer group flex flex-col justify-between">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="galaxy-icon-container">
+                                <div class="galaxy-glow-bg galaxy-glow-bg-violet group-hover:scale-110 transition duration-300"></div>
+                                <div class="relative z-10 w-12 h-12 rounded-2xl dark:bg-dark-card bg-white border dark:border-dark-border border-light-border flex items-center justify-center text-brand-indigo text-xl group-hover:scale-105 transition duration-300 shadow-soft-sm">
+                                    <i class="fas fa-box-open"></i>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-md dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-light-heading text-[11px] font-mono font-bold">12+ Resources</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold dark:text-dark-heading text-light-heading group-hover:text-brand-indigo transition mb-1">Packs & Texture Vault</h3>
+                            <p class="text-xs dark:text-dark-muted text-light-muted mb-4">MCPE texture packs, RenderDragon shaders, OLED UI tweaks, and FPS boosters.</p>
+                        </div>
+                        <div class="flex items-center text-xs font-mono font-bold text-brand-indigo group-hover:translate-x-1 transition">
+                            OPEN VAULT <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+
+                    <!-- Category 2: Gunsmith -->
+                    <div onclick="switchView('loadouts')" class="glass-card rounded-2xl p-6 cursor-pointer group flex flex-col justify-between">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="galaxy-icon-container">
+                                <div class="galaxy-glow-bg galaxy-glow-bg-pink group-hover:scale-110 transition duration-300"></div>
+                                <div class="relative z-10 w-12 h-12 rounded-2xl dark:bg-dark-card bg-white border dark:border-dark-border border-light-border flex items-center justify-center text-brand-pink text-xl group-hover:scale-105 transition duration-300 shadow-soft-sm">
+                                    <i class="fas fa-gun"></i>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-md dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-light-heading text-[11px] font-mono font-bold">Meta Loadouts</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold dark:text-dark-heading text-light-heading group-hover:text-brand-pink transition mb-1">Pro Gunsmith & Loadouts</h3>
+                            <p class="text-xs dark:text-dark-muted text-light-muted mb-4">CODM zero-recoil attachment setups with 1-click share codes.</p>
+                        </div>
+                        <div class="flex items-center text-xs font-mono font-bold text-brand-pink group-hover:translate-x-1 transition">
+                            VIEW LOADOUTS <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+
+                    <!-- Category 3: Controls -->
+                    <div onclick="switchView('huds')" class="glass-card rounded-2xl p-6 cursor-pointer group flex flex-col justify-between">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="galaxy-icon-container">
+                                <div class="galaxy-glow-bg galaxy-glow-bg-violet group-hover:scale-110 transition duration-300"></div>
+                                <div class="relative z-10 w-12 h-12 rounded-2xl dark:bg-dark-card bg-white border dark:border-dark-border border-light-border flex items-center justify-center text-brand-violet text-xl group-hover:scale-105 transition duration-300 shadow-soft-sm">
+                                    <i class="fas fa-gamepad"></i>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-md dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-light-heading text-[11px] font-mono font-bold">Claw Layouts</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold dark:text-dark-heading text-light-heading group-hover:text-brand-violet transition mb-1">HUDs & Sensitivity</h3>
+                            <p class="text-xs dark:text-dark-muted text-light-muted mb-4">4-Finger claw control layouts, tablet sensitivities, and button placement presets.</p>
+                        </div>
+                        <div class="flex items-center text-xs font-mono font-bold text-brand-violet group-hover:translate-x-1 transition">
+                            OPEN CONTROLS <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+
+                    <!-- Category 4: Servers -->
+                    <div onclick="switchView('servers')" class="glass-card rounded-2xl p-6 cursor-pointer group flex flex-col justify-between">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="galaxy-icon-container">
+                                <div class="galaxy-glow-bg galaxy-glow-bg-cyan group-hover:scale-110 transition duration-300"></div>
+                                <div class="relative z-10 w-12 h-12 rounded-2xl dark:bg-dark-card bg-white border dark:border-dark-border border-light-border flex items-center justify-center text-brand-cyan text-xl group-hover:scale-105 transition duration-300 shadow-soft-sm">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                            </div>
+                            <span class="px-2 py-1 rounded-md bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 text-[11px] font-mono font-bold">ONLINE</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold dark:text-dark-heading text-light-heading group-hover:text-brand-cyan transition mb-1">Game Servers</h3>
+                            <p class="text-xs dark:text-dark-muted text-light-muted mb-4">Direct IP addresses and Bedrock port copy modules for SMP & PvP practice servers.</p>
+                        </div>
+                        <div class="flex items-center text-xs font-mono font-bold text-brand-cyan group-hover:translate-x-1 transition">
+                            SERVER DETAILS <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+
+                    <!-- Category 5: Videos -->
+                    <div onclick="switchView('videos')" class="glass-card rounded-2xl p-6 cursor-pointer group flex flex-col justify-between">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="galaxy-icon-container">
+                                <div class="galaxy-glow-bg galaxy-glow-bg-red group-hover:scale-110 transition duration-300"></div>
+                                <div class="relative z-10 w-12 h-12 rounded-2xl dark:bg-dark-card bg-white border dark:border-dark-border border-light-border flex items-center justify-center text-red-500 text-xl group-hover:scale-105 transition duration-300 shadow-soft-sm">
+                                    <i class="fab fa-youtube"></i>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-md dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-light-heading text-[11px] font-mono font-bold">Tutorials</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold dark:text-dark-heading text-light-heading group-hover:text-red-500 transition mb-1">YouTube Content Hub</h3>
+                            <p class="text-xs dark:text-dark-muted text-light-muted mb-4">Structured channel video guides, pack reviews, and gameplay breakdowns.</p>
+                        </div>
+                        <div class="flex items-center text-xs font-mono font-bold text-red-500 group-hover:translate-x-1 transition">
+                            WATCH GUIDES <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+
+                    <!-- Category 6: Tools -->
+                    <div onclick="switchView('tools')" class="glass-card rounded-2xl p-6 cursor-pointer group flex flex-col justify-between">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="galaxy-icon-container">
+                                <div class="galaxy-glow-bg galaxy-glow-bg-emerald group-hover:scale-110 transition duration-300"></div>
+                                <div class="relative z-10 w-12 h-12 rounded-2xl dark:bg-dark-card bg-white border dark:border-dark-border border-light-border flex items-center justify-center text-brand-emerald text-xl group-hover:scale-105 transition duration-300 shadow-soft-sm">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-md dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-light-heading text-[11px] font-mono font-bold">FPS Optimizers</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold dark:text-dark-heading text-light-heading group-hover:text-brand-emerald transition mb-1">FPS Tweaks & FAQs</h3>
+                            <p class="text-xs dark:text-dark-muted text-light-muted mb-4">Low-latency options.txt parameters, thermal throttler fixes, and FAQs.</p>
+                        </div>
+                        <div class="flex items-center text-xs font-mono font-bold text-brand-emerald group-hover:translate-x-1 transition">
+                            VIEW TWEAKS <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VIEW 2: PACKS & RESOURCE VAULT ================= -->
+        <section id="view-packs" class="view-section space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b dark:border-dark-border border-light-border pb-6">
+                <div>
+                    <button onclick="switchView('home')" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-extrabold uppercase bg-brand-pink/10 text-brand-pink border border-brand-pink/30 hover:bg-brand-pink hover:text-white dark:hover:text-white transition-all shadow-soft-sm hover:scale-105 mb-3">
+                        <i class="fas fa-arrow-left"></i> RETURN TO HUB CENTER
+                    </button>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold dark:text-dark-heading text-light-heading uppercase tracking-tight">
+                        RESOURCE <span class="text-brand-pink">VAULT</span>
+                    </h2>
+                    <p class="dark:text-dark-muted text-light-muted text-xs mt-0.5">Tested & verified download links for custom texture packs & shaders.</p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
+                    <div class="relative w-full sm:w-64">
+                        <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="pack-search" placeholder="Search packs..." class="w-full pl-9 pr-4 py-2.5 rounded-xl dark:bg-dark-card bg-white border dark:border-dark-border border-light-border text-xs dark:text-dark-heading text-light-heading placeholder-slate-400 focus:outline-none focus:border-brand-pink shadow-soft-sm">
+                    </div>
+                    <select id="pack-category-filter" class="w-full sm:w-auto px-3.5 py-2.5 rounded-xl dark:bg-dark-card bg-white border dark:border-dark-border border-light-border text-xs dark:text-dark-heading text-light-heading focus:outline-none focus:border-brand-pink shadow-soft-sm">
+                        <option value="all">All Categories</option>
+                        <option value="mcpe">MCPE / Bedrock</option>
+                        <option value="shaders">Shaders</option>
+                        <option value="pvp">PvP Packs</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="packs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </section>
+
+        <!-- ================= VIEW 3: PRO GUNSMITH LOADOUTS ================= -->
+        <section id="view-loadouts" class="view-section space-y-6">
+            <div class="border-b dark:border-dark-border border-light-border pb-6">
+                <button onclick="switchView('home')" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-extrabold uppercase bg-brand-pink/10 text-brand-pink border border-brand-pink/30 hover:bg-brand-pink hover:text-white dark:hover:text-white transition-all shadow-soft-sm hover:scale-105 mb-3">
+                    <i class="fas fa-arrow-left"></i> RETURN TO HUB CENTER
+                </button>
+                <h2 class="text-2xl sm:text-3xl font-extrabold dark:text-dark-heading text-light-heading uppercase tracking-tight flex items-center gap-2.5">
+                    <i class="fas fa-gun text-brand-pink"></i> PRO GUNSMITH <span class="text-brand-pink">LOADOUTS</span>
+                </h2>
+                <p class="dark:text-dark-muted text-light-muted text-xs mt-0.5">Copy zero-recoil attachment codes directly into shooter games.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Loadout 1 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 rounded-md bg-brand-pink/10 text-brand-pink border border-brand-pink/20 text-[10px] font-mono font-bold uppercase flex items-center gap-1">
+                                <i class="fas fa-gun text-[10px]"></i> CODM META
+                            </span>
+                            <span class="text-xs text-brand-pink font-semibold"><i class="fas fa-fire me-1"></i> Ranked Meta</span>
+                        </div>
+                        <h3 class="text-lg font-bold dark:text-dark-heading text-light-heading mb-1">KILO 141 - Zero Recoil Laser</h3>
+                        <p class="text-xs dark:text-dark-muted text-light-muted mb-4">Max range, rock-solid bullet speed for long range engagements.</p>
+                        
+                        <div class="space-y-1.5 dark:bg-slate-900/50 bg-slate-50 p-3 rounded-xl dark:border-dark-border border-light-border text-xs font-mono mb-4">
+                            <div class="flex justify-between dark:text-slate-400 text-slate-600"><span>Muzzle:</span> <span class="dark:text-white text-light-heading font-semibold">Monolithic Suppressor</span></div>
+                            <div class="flex justify-between dark:text-slate-400 text-slate-600"><span>Barrel:</span> <span class="dark:text-white text-light-heading font-semibold">OWC Marksman</span></div>
+                            <div class="flex justify-between dark:text-slate-400 text-slate-600"><span>Stock:</span> <span class="dark:text-white text-light-heading font-semibold">No Stock</span></div>
+                            <div class="flex justify-between dark:text-slate-400 text-slate-600"><span>Ammunition:</span> <span class="dark:text-white text-light-heading font-semibold">50 Round Mag</span></div>
+                        </div>
+                    </div>
+                    <button onclick="copyToClipboard('7012-8821-4432-1092-33', 'Gunsmith Share Code Copied!')" class="w-full py-2.5 rounded-xl dark:bg-slate-800 bg-slate-100 hover:bg-brand-pink hover:text-white dark:text-white text-light-heading font-bold text-xs uppercase flex items-center justify-center gap-2 transition dark:border-dark-border border-light-border">
+                        <i class="fas fa-copy"></i> COPY SHARE CODE
+                    </button>
+                </div>
+
+                <!-- Loadout 2 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 rounded-md bg-brand-indigo/10 text-brand-indigo border border-brand-indigo/20 text-[10px] font-mono font-bold uppercase flex items-center gap-1">
+                                <i class="fas fa-crosshair text-[10px]"></i> HIGH MOBILITY
+                            </span>
+                            <span class="text-xs dark:text-dark-muted text-light-muted font-mono">Close Quarters</span>
+                        </div>
+                        <h3 class="text-lg font-bold dark:text-dark-heading text-light-heading mb-1">CBR4 - Speed Rusher</h3>
+                        <p class="text-xs dark:text-dark-muted text-light-muted mb-4">Extreme ADS movement speed for aggressive claw gameplay.</p>
+                        
+                        <div class="space-y-1.5 dark:bg-slate-900/50 bg-slate-50 p-3 rounded-xl dark:border-dark-border border-light-border text-xs font-mono mb-4">
+                            <div class="flex justify-between dark:text-slate-400 text-slate-600"><span>Barrel:</span> <span class="dark:text-white text-light-heading font-semibold">OWC Light Marksman</span></div>
+                            <div class="flex justify-between dark:text-slate-400 text-slate-600"><span>Stock:</span> <span class="dark:text-white text-light-heading font-semibold">YKM Light Stock</span></div>
+                            <div class="flex justify-between dark:text-slate-400 text-slate-600"><span>Laser:</span> <span class="dark:text-white text-light-heading font-semibold">OWC Laser - Tactical</span></div>
+                            <div class="flex justify-between dark:text-slate-400 text-slate-600"><span>Rear Grip:</span> <span class="dark:text-white text-light-heading font-semibold">Granulated Grip</span></div>
+                        </div>
+                    </div>
+                    <button onclick="copyToClipboard('6821-1029-3392-5501-12', 'SMG Share Code Copied!')" class="w-full py-2.5 rounded-xl dark:bg-slate-800 bg-slate-100 hover:bg-brand-indigo hover:text-white dark:text-white text-light-heading font-bold text-xs uppercase flex items-center justify-center gap-2 transition dark:border-dark-border border-light-border">
+                        <i class="fas fa-copy"></i> COPY SHARE CODE
+                    </button>
+                </div>
+
+                <!-- Loadout 3 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 rounded-md bg-brand-violet/10 text-brand-violet border border-brand-violet/20 text-[10px] font-mono font-bold uppercase flex items-center gap-1">
+                                <i class="fas fa-crosshair text-[10px]"></i> SNIPER
+                            </span>
+                            <span class="text-xs dark:text-dark-muted text-light-muted font-mono">Instant One-Shot</span>
+                        </div>
+                        <h3 class="text-lg font-bold dark:text-dark-heading text-light-heading mb-1">DL Q33 - Fast Quickscope</h3>
+                        <p class="text-xs dark:text-dark-muted text-light-muted mb-4">Maximum aim-down-sight velocity for mobile sniper players.</p>
+                        
+                        <div class="space-y-1.5 dark:bg-slate-900/50 bg-slate-50 p-3 rounded-xl dark:border-dark-border border-light-border text-xs font-mono mb-4">
+                            <div class="flex justify-between dark:text-slate-400 text-slate-600"><span>Barrel:</span> <span class="dark:text-white text-light-heading font-semibold">MIP Light Barrel</span></div>
+                            <div class="flex justify-between dark:text-slate-400 text-slate-600"><span>Stock:</span> <span class="dark:text-white text-light-heading font-semibold">OWC Skeleton Stock</span></div>
+                            <div class="flex justify-between dark:text-slate-400 text-slate-600"><span>Perk:</span> <span class="dark:text-white text-light-heading font-semibold">Sleight of Hand</span></div>
+                            <div class="flex justify-between dark:text-slate-400 text-slate-600"><span>Laser:</span> <span class="dark:text-white text-light-heading font-semibold">OWC Laser - Tactical</span></div>
+                        </div>
+                    </div>
+                    <button onclick="copyToClipboard('9910-2210-4491-0021-88', 'Sniper Share Code Copied!')" class="w-full py-2.5 rounded-xl dark:bg-slate-800 bg-slate-100 hover:bg-brand-violet hover:text-white dark:text-white text-light-heading font-bold text-xs uppercase flex items-center justify-center gap-2 transition dark:border-dark-border border-light-border">
+                        <i class="fas fa-copy"></i> COPY SHARE CODE
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VIEW 4: CONTROLS & CLAW HUDS ================= -->
+        <section id="view-huds" class="view-section space-y-6">
+            <div class="border-b dark:border-dark-border border-light-border pb-6">
+                <button onclick="switchView('home')" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-extrabold uppercase bg-brand-violet/10 text-brand-violet border border-brand-violet/30 hover:bg-brand-violet hover:text-white dark:hover:text-white transition-all shadow-soft-sm hover:scale-105 mb-3">
+                    <i class="fas fa-arrow-left"></i> RETURN TO HUB CENTER
+                </button>
+                <h2 class="text-2xl sm:text-3xl font-extrabold dark:text-dark-heading text-light-heading uppercase tracking-tight">
+                    CONTROLS & <span class="text-brand-violet">CLAW HUDS</span>
+                </h2>
+                <p class="dark:text-dark-muted text-light-muted text-xs mt-0.5">Pro claw touch layouts and camera sensitivity preset strings.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- HUD 1 -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-2.5 py-1 rounded-md bg-brand-violet/10 text-brand-violet border border-brand-violet/20 font-mono text-xs font-bold uppercase">4-FINGER CLAW</span>
+                        <span class="text-xs dark:text-dark-muted text-light-muted font-mono">Phones (6.1" - 6.7")</span>
+                    </div>
+                    <h3 class="text-lg font-bold dark:text-dark-heading text-light-heading mb-1">MCPE Bedrock PvP Layout</h3>
+                    <p class="text-xs dark:text-dark-muted text-light-muted mb-4">Jump & crouch on upper left, hotbar selector on upper right for smooth block clutching.</p>
+                    
+                    <div class="aspect-video dark:bg-slate-900 bg-slate-100 rounded-xl overflow-hidden border dark:border-dark-border border-light-border mb-4 flex items-center justify-center relative">
+                        <img src="https://placehold.co/800x450/1e1b4b/a855f7?text=4-FINGER+CLAW+PREVIEW" alt="HUD Layout Preview" class="w-full h-full object-cover">
+                    </div>
+
+                    <button onclick="copyToClipboard('SENS-MCPE-7781-PRO', 'Sens Code Copied!')" class="w-full py-2.5 rounded-xl dark:bg-slate-800 bg-slate-100 hover:bg-brand-violet hover:text-white dark:text-white text-light-heading font-bold text-xs uppercase transition dark:border-dark-border border-light-border flex items-center justify-center gap-2">
+                        <i class="fas fa-copy"></i> COPY SENSITIVITY CODE
+                    </button>
+                </div>
+
+                <!-- HUD 2 -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-2.5 py-1 rounded-md bg-brand-pink/10 text-brand-pink border border-brand-pink/20 font-mono text-xs font-bold uppercase">TABLET / IPAD</span>
+                        <span class="text-xs dark:text-dark-muted text-light-muted font-mono">6-Finger Control</span>
+                    </div>
+                    <h3 class="text-lg font-bold dark:text-dark-heading text-light-heading mb-1">Tablet Competitive Preset</h3>
+                    <p class="text-xs dark:text-dark-muted text-light-muted mb-4">Designed for larger displays to optimize movement, sliding, and rapid target switching.</p>
+                    
+                    <div class="aspect-video dark:bg-slate-900 bg-slate-100 rounded-xl overflow-hidden border dark:border-dark-border border-light-border mb-4 flex items-center justify-center relative">
+                        <img src="https://placehold.co/800x450/831843/ec4899?text=TABLET+6-FINGER+LAYOUT" alt="Tablet HUD Preview" class="w-full h-full object-cover">
+                    </div>
+
+                    <button onclick="copyToClipboard('SENS-TABLET-9902-BEAST', 'Tablet Sensitivity Copied!')" class="w-full py-2.5 rounded-xl dark:bg-slate-800 bg-slate-100 hover:bg-brand-pink hover:text-white dark:text-white text-light-heading font-bold text-xs uppercase transition dark:border-dark-border border-light-border flex items-center justify-center gap-2">
+                        <i class="fas fa-copy"></i> COPY LAYOUT CODE
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VIEW 5: GAME SERVERS ================= -->
+        <section id="view-servers" class="view-section space-y-6">
+            <div class="border-b dark:border-dark-border border-light-border pb-6">
+                <button onclick="switchView('home')" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-extrabold uppercase bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/30 hover:bg-brand-cyan hover:text-white dark:hover:text-white transition-all shadow-soft-sm hover:scale-105 mb-3">
+                    <i class="fas fa-arrow-left"></i> RETURN TO HUB CENTER
+                </button>
+                <h2 class="text-2xl sm:text-3xl font-extrabold dark:text-dark-heading text-light-heading uppercase tracking-tight">
+                    COMMUNITY <span class="text-brand-cyan">SERVERS</span>
+                </h2>
+                <p class="dark:text-dark-muted text-light-muted text-xs mt-0.5">Direct IP addresses & Bedrock ports to connect directly with players.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+                <!-- Server 1 -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan text-lg">
+                                <i class="fas fa-cubes"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold dark:text-dark-heading text-light-heading">Phantom SMP Survival</h3>
+                                <span class="text-xs text-emerald-500 font-mono font-bold flex items-center gap-1">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> ONLINE (84 Active)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 font-mono text-xs">
+                        <div class="dark:bg-slate-900/60 bg-slate-50 p-3 rounded-xl dark:border-dark-border border-light-border flex items-center justify-between">
+                            <div>
+                                <div class="dark:text-dark-muted text-light-muted text-[10px] font-bold">SERVER IP</div>
+                                <div class="text-brand-indigo font-bold">play.phantomsmp.net</div>
+                            </div>
+                            <button onclick="copyToClipboard('play.phantomsmp.net', 'Server IP Copied!')" class="px-3 py-1.5 rounded-lg dark:bg-slate-800 bg-white dark:border-dark-border border-light-border hover:bg-brand-indigo hover:text-white transition shadow-soft-sm font-bold">
+                                <i class="fas fa-copy me-1"></i> COPY
+                            </button>
+                        </div>
+
+                        <div class="dark:bg-slate-900/60 bg-slate-50 p-3 rounded-xl dark:border-dark-border border-light-border flex items-center justify-between">
+                            <div>
+                                <div class="dark:text-dark-muted text-light-muted text-[10px] font-bold">BEDROCK PORT</div>
+                                <div class="text-brand-cyan font-bold">19132</div>
+                            </div>
+                            <button onclick="copyToClipboard('19132', 'Port Copied!')" class="px-3 py-1.5 rounded-lg dark:bg-slate-800 bg-white dark:border-dark-border border-light-border hover:bg-brand-cyan hover:text-white transition shadow-soft-sm font-bold">
+                                <i class="fas fa-copy me-1"></i> COPY
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Server 2 -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-brand-pink/10 border border-brand-pink/20 flex items-center justify-center text-brand-pink text-lg">
+                                <i class="fas fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold dark:text-dark-heading text-light-heading">Phantom PvP Practice</h3>
+                                <span class="text-xs text-emerald-500 font-mono font-bold flex items-center gap-1">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> ONLINE (112 Active)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 font-mono text-xs">
+                        <div class="dark:bg-slate-900/60 bg-slate-50 p-3 rounded-xl dark:border-dark-border border-light-border flex items-center justify-between">
+                            <div>
+                                <div class="dark:text-dark-muted text-light-muted text-[10px] font-bold">SERVER IP</div>
+                                <div class="text-brand-pink font-bold">pvp.phantomsmp.net</div>
+                            </div>
+                            <button onclick="copyToClipboard('pvp.phantomsmp.net', 'PvP Server IP Copied!')" class="px-3 py-1.5 rounded-lg dark:bg-slate-800 bg-white dark:border-dark-border border-light-border hover:bg-brand-pink hover:text-white transition shadow-soft-sm font-bold">
+                                <i class="fas fa-copy me-1"></i> COPY
+                            </button>
+                        </div>
+
+                        <div class="dark:bg-slate-900/60 bg-slate-50 p-3 rounded-xl dark:border-dark-border border-light-border flex items-center justify-between">
+                            <div>
+                                <div class="dark:text-dark-muted text-light-muted text-[10px] font-bold">BEDROCK PORT</div>
+                                <div class="text-brand-violet font-bold">19133</div>
+                            </div>
+                            <button onclick="copyToClipboard('19133', 'Port Copied!')" class="px-3 py-1.5 rounded-lg dark:bg-slate-800 bg-white dark:border-dark-border border-light-border hover:bg-brand-violet hover:text-white transition shadow-soft-sm font-bold">
+                                <i class="fas fa-copy me-1"></i> COPY
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VIEW 6: VIDEOS & GUIDES ================= -->
+        <section id="view-videos" class="view-section space-y-6">
+            <div class="border-b dark:border-dark-border border-light-border pb-6">
+                <button onclick="switchView('home')" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-extrabold uppercase bg-red-500/10 text-red-500 border border-red-500/30 hover:bg-red-500 hover:text-white dark:hover:text-white transition-all shadow-soft-sm hover:scale-105 mb-3">
+                    <i class="fas fa-arrow-left"></i> RETURN TO HUB CENTER
+                </button>
+                <h2 class="text-2xl sm:text-3xl font-extrabold dark:text-dark-heading text-light-heading uppercase tracking-tight">
+                    YOUTUBE <span class="text-red-500">SHOWCASE</span>
+                </h2>
+                <p class="dark:text-dark-muted text-light-muted text-xs mt-0.5">Categorized gameplay videos, tutorials, and texture pack showcases.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Video Item 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between">
+                    <div class="relative aspect-video dark:bg-slate-900 bg-slate-100">
+                        <img src="https://placehold.co/600x340/311b92/ffffff?text=MCPE+1.20+FPS+BOOST" alt="Video" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-sm dark:text-dark-heading text-light-heading mb-2">TOP 5 MCPE 1.20 FPS BOOST PACKS</h4>
+                        <a href="https://youtube.com" target="_blank" rel="noopener" class="text-xs font-mono font-bold text-red-500 hover:underline flex items-center gap-1">
+                            WATCH ON YOUTUBE <i class="fas fa-external-link-alt text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Video Item 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between">
+                    <div class="relative aspect-video dark:bg-slate-900 bg-slate-100">
+                        <img src="https://placehold.co/600x340/880e4f/ffffff?text=ZERO+RECOIL+KILO" alt="Video" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-sm dark:text-dark-heading text-light-heading mb-2">ZERO RECOIL KILO 141 RANKED GUIDE</h4>
+                        <a href="https://youtube.com" target="_blank" rel="noopener" class="text-xs font-mono font-bold text-red-500 hover:underline flex items-center gap-1">
+                            WATCH ON YOUTUBE <i class="fas fa-external-link-alt text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Video Item 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between">
+                    <div class="relative aspect-video dark:bg-slate-900 bg-slate-100">
+                        <img src="https://placehold.co/600x340/4a148c/ffffff?text=LAG+FIX+TUTORIAL" alt="Video" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-sm dark:text-dark-heading text-light-heading mb-2">HOW TO REDUCE LAG ON ANY ANDROID GAME</h4>
+                        <a href="https://youtube.com" target="_blank" rel="noopener" class="text-xs font-mono font-bold text-red-500 hover:underline flex items-center gap-1">
+                            WATCH ON YOUTUBE <i class="fas fa-external-link-alt text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VIEW 7: TWEAKS & FAQS ================= -->
+        <section id="view-tools" class="view-section space-y-6">
+            <div class="border-b dark:border-dark-border border-light-border pb-6">
+                <button onclick="switchView('home')" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-extrabold uppercase bg-brand-emerald/10 text-brand-emerald border border-brand-emerald/30 hover:bg-brand-emerald hover:text-white dark:hover:text-white transition-all shadow-soft-sm hover:scale-105 mb-3">
+                    <i class="fas fa-arrow-left"></i> RETURN TO HUB CENTER
+                </button>
+                <h2 class="text-2xl sm:text-3xl font-extrabold dark:text-dark-heading text-light-heading uppercase tracking-tight">
+                    TWEAKS & <span class="text-brand-emerald">FAQS</span>
+                </h2>
+                <p class="dark:text-dark-muted text-light-muted text-xs mt-0.5">Mobile performance optimizations and community questions.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Config Snippet Box -->
+                <div class="glass-card rounded-2xl p-6 space-y-4">
+                    <h3 class="text-lg font-bold dark:text-dark-heading text-light-heading flex items-center gap-2">
+                        <i class="fas fa-bolt text-brand-emerald"></i> Mobile FPS Config String
+                    </h3>
+                    <p class="text-xs dark:text-dark-muted text-light-muted">Paste this parameter string into your options.txt configuration file to unlock 120 FPS limits.</p>
+                    <div class="dark:bg-slate-900/80 bg-slate-50 p-3.5 rounded-xl dark:border-dark-border border-light-border font-mono text-xs text-brand-pink font-semibold overflow-x-auto">
+                        gfx_vsync:0, gfx_max_fps:120, gfx_render_distance:6
+                    </div>
+                    <button onclick="copyToClipboard('gfx_vsync:0, gfx_max_fps:120, gfx_render_distance:6', 'Config Parameter Copied!')" class="w-full py-2.5 rounded-xl dark:bg-slate-800 bg-slate-100 hover:bg-brand-emerald hover:text-white dark:text-white text-light-heading font-bold text-xs uppercase transition dark:border-dark-border border-light-border flex items-center justify-center gap-2">
+                        <i class="fas fa-copy"></i> COPY CONFIG PARAMETER
+                    </button>
+                </div>
+
+                <!-- FAQ Accordion Box -->
+                <div class="glass-card rounded-2xl p-6 space-y-4">
+                    <h3 class="text-lg font-bold dark:text-dark-heading text-light-heading flex items-center gap-2">
+                        <i class="fas fa-question-circle text-brand-pink"></i> Frequently Asked Questions
+                    </h3>
+                    
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3.5 dark:bg-slate-900/60 bg-slate-50 rounded-xl dark:border-dark-border border-light-border">
+                            <div class="font-bold dark:text-dark-heading text-light-heading mb-1">Q: How do I import texture packs on MCPE?</div>
+                            <div class="dark:text-dark-muted text-light-muted">A: Download the .mcpack file directly from the Vault, open your device file manager, tap the file, and select Minecraft to automatically import.</div>
+                        </div>
+
+                        <div class="p-3.5 dark:bg-slate-900/60 bg-slate-50 rounded-xl dark:border-dark-border border-light-border">
+                            <div class="font-bold dark:text-dark-heading text-light-heading mb-1">Q: Are these texture packs safe on servers?</div>
+                            <div class="text-light-muted dark:text-dark-muted">A: Yes! All provided packs, shaders, and sensitivity codes are 100% cosmetic and multiplayer compliant.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t dark:border-dark-border border-light-border dark:bg-dark-card bg-white py-6 text-center dark:text-dark-muted text-light-muted text-xs transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2 font-bold dark:text-dark-heading text-light-heading">
+                <i class="fas fa-ghost text-brand-pink"></i>
+                <span>PHANTOM GAMING</span> • GitHub Portal Engine
+            </div>
+            <p>© <span id="year"></span> PHANTOM. All assets belong to their respective creators.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set dynamic current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Theme Toggle Manager Logic
+        function initTheme() {
+            const savedTheme = localStorage.getItem('phantom_theme');
+            const isDark = savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                updateThemeUI(true);
+            } else {
+                document.documentElement.classList.remove('dark');
+                updateThemeUI(false);
+            }
+        }
+
+        function toggleTheme() {
+            const isCurrentlyDark = document.documentElement.classList.contains('dark');
+            if (isCurrentlyDark) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('phantom_theme', 'light');
+                updateThemeUI(false);
+                showToast("Switched to Light Theme");
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('phantom_theme', 'dark');
+                updateThemeUI(true);
+                showToast("Switched to Dark Theme");
+            }
+        }
+
+        function updateThemeUI(isDark) {
+            const icon = document.getElementById('theme-icon');
+            const label = document.getElementById('theme-label');
+            if (isDark) {
+                icon.className = 'fas fa-sun text-base text-amber-400';
+                label.textContent = 'LIGHT MODE';
+            } else {
+                icon.className = 'fas fa-moon text-base text-indigo-600';
+                label.textContent = 'DARK MODE';
+            }
+        }
+
+        // Mobile Menu Drawer Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+        // View Switcher Engine (Hardware Accelerated)
+        function switchView(viewId) {
+            const views = document.querySelectorAll('.view-section');
+            views.forEach(view => {
+                view.classList.remove('active');
+            });
+
+            const navTabs = document.querySelectorAll('.nav-tab-btn');
+            navTabs.forEach(tab => {
+                tab.classList.remove('text-brand-pink', 'bg-brand-pink/10', 'border', 'border-brand-pink/20');
+                tab.classList.add('text-slate-500', 'dark:text-slate-400');
+            });
+
+            const targetView = document.getElementById(`view-${viewId}`);
+            if (targetView) {
+                targetView.classList.add('active');
+            }
+
+            const targetNav = document.getElementById(`nav-${viewId}`);
+            if (targetNav) {
+                targetNav.classList.remove('text-slate-500', 'dark:text-slate-400');
+                targetNav.classList.add('text-brand-pink', 'bg-brand-pink/10', 'border', 'border-brand-pink/20');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Clipboard & Toast System
+        function copyToClipboard(text, customMessage = "Copied to Clipboard!") {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            showToast(customMessage);
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'glass-card px-4 py-3 rounded-xl border border-brand-pink/40 dark:text-white text-light-heading text-xs font-mono font-bold flex items-center gap-2 shadow-soft-md pointer-events-auto bg-white dark:bg-dark-card';
+            toast.innerHTML = `<i class="fas fa-check-circle text-brand-pink text-sm"></i> ${message}`;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 2500);
+        }
+
+        const expPopups = ['+500 XP!', 'COMBO x2!', 'HEADSHOT!', 'LEVEL UP!', 'ULTRA INSTINCT!', 'CRITICAL HIT!', 'VICTORY!'];
+
+        function fidgetClick(element, alertMsg, event) {
+            // Scale reaction (GPU transform without repainting filter layers)
+            element.style.transform = 'scale(1.6) rotate(180deg)';
+            
+            // Spawn dynamic floating text popup at mouse coordinates
+            if (event) {
+                const randomText = expPopups[Math.floor(Math.random() * expPopups.length)];
+                const floater = document.createElement('div');
+                floater.className = 'exp-floater';
+                floater.innerText = randomText;
+                floater.style.left = `${event.clientX - 25}px`;
+                floater.style.top = `${event.clientY - 20}px`;
+                document.body.appendChild(floater);
+                
+                setTimeout(() => floater.remove(), 750);
+            }
+
+            showToast(`🎮 ${alertMsg}`);
+            
+            setTimeout(() => {
+                element.style.transform = '';
+            }, 450);
+        }
+
+        // Vault Pack Data & Dynamic Renderer
+        const packsData = [
+            { id: 1, name: "Phantom Ultra PvP v3.2", category: "pvp", desc: "Short swords, low fire animations, high contrast ore outlines for MCPE.", rating: "4.9", size: "12 MB", code: "PHANTOM-PVP-V32" },
+            { id: 2, name: "OLED Dynamic Shaders", category: "shaders", desc: "Lightweight RenderDragon shader for deep blacks and glowing torch light.", rating: "4.8", size: "8 MB", code: "OLED-SHADER-LITE" },
+            { id: 3, name: "Bedrock FPS Boost Pro", category: "mcpe", desc: "Removes particles & entity lag to double your framerate on mobile devices.", rating: "5.0", size: "4 MB", code: "FPS-BOOST-MAX" },
+            { id: 4, name: "Night Vision Fullbright", category: "mcpe", desc: "Permanent cave visibility without using potions or external mods.", rating: "4.7", size: "1.5 MB", code: "FULLBRIGHT-MCPE" },
+            { id: 5, name: "Custom Crosshairs Pack", category: "pvp", desc: "15 custom aim crosshair styles for mobile precision aiming.", rating: "4.9", size: "3 MB", code: "CROSSHAIRS-15X" },
+            { id: 6, name: "Clear Glass & Clean UI", category: "mcpe", desc: "Transparent inventory UI with borderless glass blocks for builds.", rating: "4.6", size: "2.2 MB", code: "CLEAR-UI-BEDROCK" }
+        ];
+
+        function renderPacks(packsToRender) {
+            const grid = document.getElementById('packs-grid');
+            if (!grid) return;
+
+            grid.innerHTML = packsToRender.map(pack => `
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 rounded-md bg-brand-pink/10 text-brand-pink border border-brand-pink/20 text-[10px] font-mono font-bold uppercase">${pack.category}</span>
+                            <span class="text-xs font-mono dark:text-dark-muted text-light-muted flex items-center gap-1"><i class="fas fa-star text-amber-400"></i> ${pack.rating}</span>
+                        </div>
+                        <h3 class="text-base font-bold dark:text-dark-heading text-light-heading mb-1.5">${pack.name}</h3>
+                        <p class="text-xs dark:text-dark-muted text-light-muted mb-4">${pack.desc}</p>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between text-xs font-mono dark:text-dark-muted text-light-muted border-t dark:border-dark-border border-light-border pt-3">
+                            <span>FILE SIZE: ${pack.size}</span>
+                            <span class="text-brand-pink font-semibold">VERIFIED</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="copyToClipboard('${pack.code}', 'Pack Code Copied!')" class="py-2 rounded-xl dark:bg-slate-800 bg-slate-100 hover:bg-brand-pink hover:text-white text-xs font-mono font-bold dark:text-white text-light-heading transition border dark:border-dark-border border-light-border flex items-center justify-center gap-1.5">
+                                <i class="fas fa-key"></i> CODE
+                            </button>
+                            <a href="#" onclick="showToast('Starting Direct Download...'); return false;" class="py-2 rounded-xl gradient-btn-primary text-white text-xs font-mono font-bold transition flex items-center justify-center gap-1.5">
+                                <i class="fas fa-download"></i> DOWNLOAD
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter Logic
+        function filterPacks() {
+            const searchVal = document.getElementById('pack-search')?.value.toLowerCase() || '';
+            const catVal = document.getElementById('pack-category-filter')?.value || 'all';
+
+            const filtered = packsData.filter(pack => {
+                const matchesSearch = pack.name.toLowerCase().includes(searchVal) || pack.desc.toLowerCase().includes(searchVal);
+                const matchesCat = catVal === 'all' || pack.category === catVal;
+                return matchesSearch && matchesCat;
+            });
+
+            renderPacks(filtered);
+        }
+
+        // Initialize App on DOM Load
+        window.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            renderPacks(packsData);
+
+            document.getElementById('pack-search')?.addEventListener('input', filterPacks);
+            document.getElementById('pack-category-filter')?.addEventListener('change', filterPacks);
+        });
+    </script>
+</body>
+</html>
